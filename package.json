@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "body-parser": "^1.5.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "method-override": "^2.1.2",
+    "mongodb": "^4.7.0",
+    "mongoose": "^6.4.4",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  }
+}

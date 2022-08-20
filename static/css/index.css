@@ -1,0 +1,16 @@
+body{
+    background-color:rgb(183, 157, 229);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.principal-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    width: 500px;
+}
