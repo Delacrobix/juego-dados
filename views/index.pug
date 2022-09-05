@@ -11,7 +11,7 @@ html(lang="es")
         div.container    
             div(class='principal-div')
                 h1(class="text-center")= '¡Bienvenido al juego!'
-                form(action= '/createGame' method= 'POST' id= 'form-input')
+                form(id= 'form-input')
                     div(class= 'form-floating mb-3')
                         input(type= 'text' name= 'input-player' id='input-player' class= 'form-control')
                         label(for= 'input-player' id= 'label-players')='Ingrese un numero de jugadores'

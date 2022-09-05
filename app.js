@@ -30,12 +30,16 @@ app.set('view engine', 'pug');
 app.use(router);
 
 app.get('/', async (req, res) =>{
-
   res.render('index');
 });
 
+app.get('/game/:id', async (req, res) =>{
+  res.render('game', {});
+});
+
 //API routes
-router.route('/game/:gameId').get(controllers.findId);
+router.route('/:gameId').get(controllers.findId);
+router.route('/gamers/:gameId').get(controllers.returnPlayers);
 router.route('/game/:gameId/winner').get(controllers.returnWinner);
 router.route('/startGame').post(controllers.updateGame);
 router.route('/createGame').post(controllers.addGame);

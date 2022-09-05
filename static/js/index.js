@@ -1,10 +1,47 @@
 const input_button = document.getElementById('players-btn');
-document.getElementById('submit-button').style.display = 'none';
+const submit_button = document.getElementById('submit-button');
+submit_button.style.display = 'none'
 
 input_button.onclick = function(e){
     e.preventDefault();
     deleteInputs();
     createGame();
+    
+}
+
+submit_button.onclick = function(e){
+    sendData();
+    e.preventDefault();
+}
+
+async function sendData(){
+    let inputs = document.querySelectorAll('#player-in');
+    let players_array = [];
+
+    inputs.forEach(element => {
+        players_array.push(element.value);
+    });
+
+    let game_data = {
+        gamers: players_array,
+        type: 'normal',
+        inProgress: true
+    };
+
+    let response_data;
+
+    await fetch('/createGame', {
+        method: 'POST',
+        body: JSON.stringify(game_data),
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => response_data = response);
+
+    location.href = `/game/${response_data._id}`;
 }
 
 function deleteInputs(){

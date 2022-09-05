@@ -45,7 +45,7 @@ exports.addGame = function (req, res){
 
   game.save(game);
 
-  res.send('Juego iniciado');
+  res.send(game);
 }
 
 //PUT * Actualiza un registro ya existente
@@ -109,5 +109,24 @@ exports.returnWinner = function(req, res){
         id: Game.winner._id,
         name: Game.winner.name
       });
+    });
+}
+
+//GET * Retorna el ganador del juego.
+exports.returnPlayers = async function(req, res){
+  let gameId = req.params.gameId;
+
+  await Game.
+    findById(gameId).
+    populate('gamers').
+    exec(async function(err, Game) {
+      if(err){
+        return await res.status(500).send({message: `Error al realizar la petición ${err}`})
+      }
+      if(!Game){
+        return await res.status(404).send({message: 'Juego no existe'});
+      }
+      
+      await res.json(Game.gamers);
     });
 }
