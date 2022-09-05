@@ -3,14 +3,29 @@ document.getElementById('submit-button').style.display = 'none';
 
 input_button.onclick = function(e){
     e.preventDefault();
+    deleteInputs();
     createGame();
+}
+
+function deleteInputs(){
+    let inputs = document.querySelectorAll('#player-in');
+    let labels = document.querySelectorAll('.form-label')
+
+    document.getElementById('label-errors').innerHTML = '';
+
+    inputs.forEach(element => {
+        element.remove();
+    });
+
+    labels.forEach(element => {
+        element.remove();
+    });
 }
 
 function createGame(){
     let num_players = document.getElementById('input-player').value;
 
     if(validateData(num_players)){
-        document.getElementById('players-btn').style.display = 'none';
         document.getElementById('submit-button').style.display = 'block';
         for(let i = 0; i < parseInt(num_players); i++){
             let div = document.createElement('div');
@@ -40,6 +55,7 @@ function addPlayer(index){
 
     player_input.name = 'gamers';
     player_input.className = 'form-control';
+    player_input.id = 'player-in';
     player_input.value = player_name;
 
     form.appendChild(player_label);

@@ -4,7 +4,7 @@
 
 - <strong>Dependencias de NodeJS:</strong> En la dirección:
 
-        /4_caso-practico-pagina-dinamica/
+        /juego-dados
 
     se instalaran todas las dependencias ejecutando el comando
 
