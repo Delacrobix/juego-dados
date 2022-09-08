@@ -6,12 +6,11 @@ input_button.onclick = function(e){
     e.preventDefault();
     deleteInputs();
     createGame();
-    
 }
 
 submit_button.onclick = function(e){
-    sendData();
     e.preventDefault();
+    sendData();
 }
 
 async function sendData(){

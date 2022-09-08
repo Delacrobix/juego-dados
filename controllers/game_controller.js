@@ -3,16 +3,15 @@ var mongoose = require('mongoose'),
     Gamer = require('../models/gamerSchema');
 
 //GET * Retorna un juego con un ID en especifico
-exports.findId = function(req, res){
+exports.findId = async function(req, res){
     let gameId = req.params.gameId;
 
   Game.
     findById(gameId).
     populate('gamers').
     populate('winner').
-    exec(function (err, Game) {
-
-      return res.status(200).jsonp({
+    exec(async function (err, Game) {
+      return await res.status(200).jsonp({
         id: Game._id,
         gamers: Game.gamers,
         inProgress: Game.inProgress,
@@ -20,6 +19,33 @@ exports.findId = function(req, res){
             id: Game.winner._id,
             name: Game.winner.name
         }  
+      });
+    });
+}
+
+//POST * Asigne la apuesta de cada jugador.
+exports.saveBet = function(req, res) {
+  let gameId = req.params.gameId;
+
+
+
+  Game.
+    findById(gameId).
+    populate('gamers').
+    populate('winner').
+    exec(async function (err, Game) {
+
+      Game.gamers.forEach(function(gamer) {
+        gamer.gamer_bet = Game.rollDices();
+      });
+
+      return await res.status(200).jsonp({
+        id: Game._id,
+        gamers: Game.gamers,
+        winner: {
+            id: Game.winner._id,
+            name: Game.winner.name
+        }
       });
     });
 }
