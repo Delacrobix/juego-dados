@@ -11,7 +11,7 @@ var GamerSchema = new Schema({
 });
 
 GamerSchema.methods.rollDices = function() {
-    return (Math.floor(Math.random() * 7));
+    return (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
 }
 
 module.exports = mongoose.model('Gamer', GamerSchema);

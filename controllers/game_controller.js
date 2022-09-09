@@ -24,29 +24,23 @@ exports.findId = async function(req, res){
 }
 
 //POST * Asigne la apuesta de cada jugador.
-exports.saveBet = function(req, res) {
-  let gameId = req.params.gameId;
-
-
+exports.saveBet = async function(req, res) {
+  let gameId = req.body.gameId;
 
   Game.
     findById(gameId).
     populate('gamers').
     populate('winner').
-    exec(async function (err, Game) {
-
-      Game.gamers.forEach(function(gamer) {
-        gamer.gamer_bet = Game.rollDices();
+    exec(async function (err, _Game) {
+      _Game.gamers.forEach(async function(gamer) {
+        gamer.gamer_bet = gamer.rollDices();
       });
 
-      return await res.status(200).jsonp({
-        id: Game._id,
-        gamers: Game.gamers,
-        winner: {
-            id: Game.winner._id,
-            name: Game.winner.name
-        }
+      await _Game.save(function (err){
+        if(err) return res.status(500).send(err.message);
       });
+
+      return res.send(_Game);
     });
 }
 
