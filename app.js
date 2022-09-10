@@ -41,6 +41,6 @@ app.get('/game/:id', async (req, res) =>{
 router.route('/api/return/:gameId').get(controllers.findId);
 router.route('/gamers/:gameId').get(controllers.returnPlayers);
 router.route('/game/:gameId/winner').get(controllers.returnWinner);
-router.route('/startGame').post(controllers.updateGame);
+router.route('/api/game/setWinner').post(controllers.setWinner);
 router.route('/createGame').post(controllers.addGame);
 router.route('/api/game/saveBet').post(controllers.saveBet);

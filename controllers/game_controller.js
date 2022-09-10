@@ -34,9 +34,13 @@ exports.saveBet = async function(req, res) {
     exec(async function (err, _Game) {
       _Game.gamers.forEach(async function(gamer) {
         gamer.gamer_bet = gamer.rollDices();
+        
+        await gamer.save(function (err){
+          if(err) return res.status(500).send(err.message);
+        });
       });
 
-      await _Game.save(function (err){
+      _Game.save(function (err){
         if(err) return res.status(500).send(err.message);
       });
 
@@ -69,45 +73,22 @@ exports.addGame = function (req, res){
 }
 
 //PUT * Actualiza un registro ya existente
-exports.updateGame = function(req, res){
-    let { gamerBet, id, type } = req.body;
-
-    var game = new Game({
-      _id: id,
-      type: type
-    });
-  
-    for(let i = 0; i < gamerBet.length; i++){
-      Gamer.findById(gamerBet[i].id).exec(function(err, Gamer) {
-        if(err) return res.status(500).send({message: `Error al realizar la petición ${err}`});
-        
-        if(!Gamer) return res.status(404).send({message: 'Jugador no existe'});
-        
-        Gamer._id = gamerBet[i].id
-        Gamer.gamer_bet = gamerBet[i].gamer_bet;
-        
-        game.gamers.push(Gamer);
-  
-        Gamer.save(function (err){
-          if(err) return res.status(500).send(err.message);
-        });
-      });
-    }
+exports.setWinner = function(req, res){
+    let { id } = req.body;
   
     Game.findById(id).exec(async function(err, Game) {
         if(err) return res.status(500).send({message: `Error al realizar la petición ${err}`});
         
         if(!Game) return res.status(404).send({message: 'Juego no existe'});
         
-        Game._id = game._id;
-        Game.type = game.type;
-        Game.gamers = game.gamers;
         Game.winner = Game.selectWinner();
+        Game.inProgress = false;
   
         Game.save(function (err){
           if(err) return res.status(500).send(err.message);
-          res.send("Juego actualizado.")
         });
+
+        return res.send(Game);
     });
 }
 
