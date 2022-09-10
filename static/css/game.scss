@@ -11,6 +11,7 @@ body{
     display: grid;
     justify-content: center;
     align-content: center;
+    
 
     .countdown{
          background-color: rgb(104, 104, 104);
@@ -24,34 +25,42 @@ body{
     
     .players-container{
         background-color: rgb(82, 82, 82);
-        width: 19em;
-        height: 5em;
+        border-radius: 50px;
+        padding: 10px;
+        width: 400px;
+        height: auto;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         align-content: center;
         color: aliceblue;
-        margin-bottom: 25px;
 
         .name-label{
             font-size: 1.2rem;
-            
+            padding: 5px;
         }
     }
 
-    .winner-container{
-        background-color: rgb(167, 165, 165);
-        width: 12em;
-        height: 2em;
+    .winner.container{
+        width: 350px;
+        height: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        .winner-label{
+            color: aliceblue;
+            font-size: 1.2rem;
+        }
     }
 
     .button-container{
+        display: grid;
+        justify-content: center;
         
         .start-button{
             padding: 2rem 4rem 2rem 4rem;
             position: relative;
-            margin-top: 3em;
             background-color: rgb(151, 132, 238);
-            border-radius: 5%;
+            border-radius: 10px;
             transition: all 500ms ease-out;
             color: black;
             font-size: 2em;

@@ -11,26 +11,23 @@ html(lang="en")
             div.countdown
                 label.count-sec
 
-            div.players-container 
-                h6.name-label
-                h6.name-label
-                h6.name-label
-                h6.name-label
-                h6.name-label
-                h6.name-label
-                h6.name-label
-                h6.name-label
-                h6.name-label
-                h6.name-label
-                h6.name-label
-                h6.name-label
+            div.players-container
+                table
+                    tr
+                        th Estructura
+                    tr
+                        td Jugador
+                        td Apuesta
+                table
+                    tr.tr-list
+                    tr.tr-list
+                    tr.tr-list
+                    tr.tr-list
 
             div.winner.container
                 .winner-label Ganador: 
-
+                
             div.button-container
                 a.start-button Start Game
-            
-            
         
         script(src="../static/js/game.js")
