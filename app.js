@@ -21,7 +21,7 @@ mongoose.connect("mongodb://localhost/gamesDB", function(err, res){
   if(err){
     console.log("ERROR: connecting to Database. " + err);
   }
-  app.listen(8080, function(){
+  app.listen((8080) || (process.env.PORT), function(){
     console.log("Node server running on port 8080");
   });
 });
