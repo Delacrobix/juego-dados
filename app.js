@@ -4,7 +4,7 @@ const express = require('express'),
     morgan = require('morgan'),
     mongoose = require('mongoose'),
     controllers = require('./controllers/game_controller'),
-    PORT = 8080 || process.env.PORT,
+    PORT = process.env.PORT || 8080,
     MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/gamesDB';
 
 if(process.env.NODE_ENV !== 'production'){
