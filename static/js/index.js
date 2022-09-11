@@ -1,11 +1,14 @@
 const input_button = document.getElementById('players-btn');
 const submit_button = document.getElementById('submit-button');
+var names = namesArray();
+
 submit_button.style.display = 'none'
 
 input_button.onclick = function(e){
     e.preventDefault();
     deleteInputs();
     createGame();
+    names = namesArray();
 }
 
 submit_button.onclick = function(e){
@@ -43,6 +46,13 @@ async function sendData(){
     location.href = `/game/${response_data._id}`;
 }
 
+function namesArray(){
+    var names = ['Juan', 'Rocío', 'Mike', 'Carlos', 'Camila', 'Jhon', 'Maria', 'Pablo', 'Richard',
+                 'Ash', 'Fernando', 'Roberto', 'Loise', 'Melissa', 'Fazt', 'Moe', 'Chloe'];
+
+    return names;
+}
+
 function deleteInputs(){
     let inputs = document.querySelectorAll('#player-in');
     let labels = document.querySelectorAll('.form-label')
@@ -65,18 +75,18 @@ function createGame(){
         document.getElementById('submit-button').style.display = 'block';
         for(let i = 0; i < parseInt(num_players); i++){
             let div = document.createElement('div');
+            div.className = 'div-gamers';
             div.id = 'div-gamers-' + i;
-            document.getElementById('form-input').appendChild(div);
+            document.querySelector('.gamers-container').appendChild(div);
             addPlayer(i);
         }
     }
 }
 
 function getOneName(){
-    let names = ['Juan', 'Rocío', 'Mike', 'Carlos', 'Camila', 'Jhon', 'Maria', 'Pablo', 'Richard',
-                 'Ash', 'Fernando', 'Roberto', 'Loise', 'Melissa', 'Fazt', 'Moe', 'Chloe'];
+    names.sort(()=> Math.random() - 0.5);
 
-    return names[Math.floor(Math.random()*17)];
+    return names.pop();
 }
 
 function addPlayer(index){

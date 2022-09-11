@@ -14,10 +14,11 @@ html(lang="es")
                 form(id= 'form-input')
                     div(class= 'form-floating mb-3')
                         input(type= 'text' name= 'input-player' id='input-player' class= 'form-control')
-                        label(for= 'input-player' id= 'label-players')='Ingrese un numero de jugadores'
+                        label(for= 'input-player' id= 'label-players')='Ingrese numero de jugadores'
                     div(class= 'mb-3')
                         button(type= 'button' id= 'players-btn' class="btn btn-info")= 'Generar jugadores'
                         button(type='submit' id='submit-button' class='btn btn-primary')= 'Iniciar juego'
+                    div.gamers-container
                 div
                     label(id= 'label-errors')=''
 

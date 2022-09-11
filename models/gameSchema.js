@@ -29,20 +29,20 @@ GameSchema.methods.randomWinner = function(winner1, winner2) {
 }
 
 GameSchema.methods.selectWinner = function(){
+    console.log(this.gamers[0])
     let winner = this.gamers[0],
         selected_gamer,
         bet_gamer1 = 0,
         bet_gamer2 = 0;
   
     for(let i = 1; i < this.gamers.length; i++){
-      selected_gamer = this.gamers[i]
+      selected_gamer = this.gamers[i];
   
       bet_gamer1 = winner.gamer_bet;
-      bet_gamer2 = selected_gamer.gamer_bet;
+      bet_gamer2 = this.gamers[i].gamer_bet;
   
       if(bet_gamer1 < bet_gamer2){
         winner = selected_gamer;
-        condition = false;
       }else if(bet_gamer1 == bet_gamer2){
         winner = this.randomWinner(winner, selected_gamer);
       }

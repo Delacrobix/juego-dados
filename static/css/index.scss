@@ -7,14 +7,36 @@ body{
 }
 
 .container{
-    position: relative;
-    margin-top: 20em;
+    height: 100vh;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    
 
     .principal-div{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -5%);
+        display: grid;
+        align-content: center;
+        width: 400px;
+
+        form{
+
+            .gamers-container{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+
+                .div-gamers{
+                    padding-right: 5px;
+                }
+            }
+
+            div label{
+                color: black;
+            }
+
+            .form-label{
+                color: aliceblue;
+            }
+        }
 
         h1{
             color: aliceblue;
@@ -24,6 +46,22 @@ body{
             display: flex;
             align-items: center;
             justify-content: left;
+
+            #players-btn{
+                background-color: rgb(217, 167, 233);
+                border: rgb(217, 167, 233) 1px inset;
+            }
+
+            button{
+                background-color: rgb(217, 167, 233);
+                border: rgb(222, 146, 247) 1px inset;
+                color: rgb(36, 35, 35);
+            }
+
+            button:hover, #players-btn:hover{
+                background-color: rgb(255, 255, 255);
+                color: black;
+            }
 
             #submit-button{
                 margin-left: 20px;

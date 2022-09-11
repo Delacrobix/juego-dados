@@ -22,17 +22,45 @@ body{
             font-size: 2em;
         }
     } 
+
+    .structure-container{
+        display: grid;
+        align-content: center;
+        color: aliceblue;
+        font-size: 1.2em;
+        text-align: center;
+        padding: 10px;
+
+        table tr {
+            th, td{
+                border: white 1px inset;
+            }
+        }
+    }
     
     .players-container{
         background-color: rgb(82, 82, 82);
-        border-radius: 50px;
+        border-radius: 15px;
         padding: 10px;
         width: 400px;
         height: auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
         align-content: center;
         color: aliceblue;
+
+        label{
+            font-size: 1.2em;
+        }
+
+        table{
+            width: 100%;
+            text-align: left;
+            padding-top: 10px;
+
+            th, td{
+                border: white 1px inset;
+                padding: 10px;
+            }
+        }
 
         .name-label{
             font-size: 1.2rem;
@@ -53,11 +81,15 @@ body{
     }
 
     .button-container{
+        .new-game{
+            visibility: hidden;
+        }
+        
         display: grid;
         justify-content: center;
         
-        .start-button{
-            padding: 2rem 4rem 2rem 4rem;
+        a{
+            padding: 1rem 2rem 1rem 2rem;
             position: relative;
             background-color: rgb(151, 132, 238);
             border-radius: 10px;
@@ -67,7 +99,7 @@ body{
             text-decoration: none;
         }
 
-        .start-button:hover{
+        a:hover{
             background-color: azure;
             cursor: pointer;
         }

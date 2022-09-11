@@ -8,16 +8,21 @@ html(lang="en")
         title Game room
     body 
         div.form
-            div.countdown
-                label.count-sec
+            //- div.countdown
+            //-     label.count-sec
 
-            div.players-container
+            div.structure-container
                 table
-                    tr
-                        th Estructura
+                    thead 
+                        tr
+                            th(colspan="2") Estructura
                     tr
                         td Jugador
                         td Apuesta
+
+            div.players-container
+                label 
+                    strong Jugadores: 
                 table
                     tr.tr-list
                     tr.tr-list
@@ -28,6 +33,7 @@ html(lang="en")
                 .winner-label Ganador: 
                 
             div.button-container
-                a.start-button Start Game
+                a.start-button Iniciar Juego
+                a.new-game Nuevo Juego
         
         script(src="../static/js/game.js")

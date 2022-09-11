@@ -1,8 +1,13 @@
 var start_button = document.querySelector('.start-button');
 var url_id = window.location.pathname.slice(6);
+var new_game = document.querySelector('.new-game');
 
 async function init_function(){
     printPlayers(await getPlayers());
+}
+
+new_game.onclick = function(){
+    location.href = '/home';
 }
 
 start_button.onclick = async function(e) {
@@ -12,6 +17,9 @@ start_button.onclick = async function(e) {
     await setFullGame();
 
     await printPlayersBet();
+    new_game.style.visibility = 'visible';
+    start_button.style.visibility = 'hidden';
+    start_button.style.display = 'none';
 };
 
 async function setFullGame() {

@@ -76,7 +76,7 @@ exports.addGame = function (req, res){
 exports.setWinner = function(req, res){
     let { id } = req.body;
   
-    Game.findById(id).exec(async function(err, Game) {
+    Game.findById(id).populate('gamers').exec(async function(err, Game) {
         if(err) return res.status(500).send({message: `Error al realizar la petición ${err}`});
         
         if(!Game) return res.status(404).send({message: 'Juego no existe'});
