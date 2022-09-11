@@ -22,6 +22,10 @@
 
         nodemon app
 
+    Ya en el navegador la pagina de inicio es posible visualizarla en la siguiente dirección
+
+        localhost:8080/home
+
 ### <strong>Experiencia de usuario:</strong> <a name="id9"></a>
 
 La aplicación tiene un funcionamiento bastante simple:

@@ -29,7 +29,6 @@ GameSchema.methods.randomWinner = function(winner1, winner2) {
 }
 
 GameSchema.methods.selectWinner = function(){
-    console.log(this.gamers[0])
     let winner = this.gamers[0],
         selected_gamer,
         bet_gamer1 = 0,
