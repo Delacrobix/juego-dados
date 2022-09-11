@@ -4,7 +4,7 @@ const express = require('express'),
     morgan = require('morgan'),
     mongoose = require('mongoose'),
     controllers = require('./controllers/game_controller'),
-    $PORT = 8080 || process.env.PORT,
+    PORT = 8080 || process.env.PORT,
     MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/gamesDB';
 
 if(process.env.NODE_ENV !== 'production'){
@@ -27,7 +27,7 @@ mongoose.connect(MONGODB_URI, function(err, res){
   if(err){
     console.log("ERROR: connecting to Database. " + err);
   }
-  app.listen($PORT, function(){
+  app.listen(PORT, function(){
     console.log(`Node server running on port ${PORT}`);
   });
 });
