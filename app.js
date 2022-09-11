@@ -4,8 +4,9 @@ const express = require('express'),
     morgan = require('morgan'),
     mongoose = require('mongoose'),
     controllers = require('./controllers/game_controller'),
-    PORT = process.env.PORT || 8080,
-    MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/gamesDB';
+    PORT =  8080 || process.env.PORT,
+    MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/gamesDB',
+    MAIN_PATH = process.env.MAIN_PATH || '/home';
 
 if(process.env.NODE_ENV !== 'production'){
   require('dotenv').config();
@@ -35,7 +36,7 @@ mongoose.connect(MONGODB_URI, function(err, res){
 app.set('view engine', 'pug');
 app.use(router);
 
-app.get('/home', async (req, res) =>{
+app.get(MAIN_PATH, async (req, res) =>{
   res.render('index');
 });
 
