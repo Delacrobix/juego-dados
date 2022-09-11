@@ -12,8 +12,8 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 const app = express(),
-    statics = __dirname,
-    router = express.Router();
+      statics = __dirname,
+      router = express.Router();
 
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
