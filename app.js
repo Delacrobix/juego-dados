@@ -35,7 +35,7 @@ mongoose.connect(MONGODB_URI, function(err, res){
 app.set('view engine', 'pug');
 app.use(router);
 
-app.get('/', async (req, res) =>{
+app.get('/home', async (req, res) =>{
   res.render('index');
 });
 
