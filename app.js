@@ -23,7 +23,7 @@ app.use(morgan("dev"));
 app.use(express.static(statics));
 app.use('/static', express.static('./static'));
 
-mongoose.connect(MONGODB_URI, function(err, res){
+mongoose.connect('mongodb+srv://root:root@cluster0.zioonxz.mongodb.net/?retryWrites=true&w=majority', function(err, res){
   if(err){
     console.log("ERROR: connecting to Database. " + err);
   }
