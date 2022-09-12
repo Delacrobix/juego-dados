@@ -4,12 +4,12 @@ const express = require('express'),
     morgan = require('morgan'),
     mongoose = require('mongoose'),
     controllers = require('./controllers/game_controller'),
-    PORT = process.env.PORT || 8080,
-    MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/gamesDB';
+    env_conf = require('dotenv');
 
-if(process.env.NODE_ENV !== 'production'){
-  require('dotenv').config();
-}
+env_conf.config();
+
+const PORT = process.env.PORT || 8080,
+      MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/gamesDB';
 
 const app = express(),
       statics = __dirname,
@@ -23,14 +23,17 @@ app.use(morgan("dev"));
 app.use(express.static(statics));
 app.use('/static', express.static('./static'));
 
-mongoose.connect(MONGODB_URI, function(err, res){
-  if(err){
+(async () => {
+  try{
+   await mongoose.connect(MONGODB_URI);
+  }catch(err){
     console.log("ERROR: connecting to Database. " + err);
   }
+
   app.listen(PORT, function(){
     console.log(`Node server running on port ${PORT}`);
   });
-});
+})();
 
 app.set('view engine', 'pug');
 app.use(router);
