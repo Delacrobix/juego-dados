@@ -5,7 +5,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     controllers = require('./controllers/game_controller'),
     PORT = process.env.PORT || 8080,
-    MONGODB_URI = process.env.MONGODB_URI || 'mongodb://0.0.0.0/gamesDB';
+    MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/gamesDB';
 
 if(process.env.NODE_ENV !== 'production'){
   require('dotenv').config();
@@ -23,7 +23,7 @@ app.use(morgan("dev"));
 app.use(express.static(statics));
 app.use('/static', express.static('./static'));
 
-mongoose.connect('mongodb+srv://root:root@cluster0.zioonxz.mongodb.net/?retryWrites=true&w=majority', function(err, res){
+mongoose.connect(MONGODB_URI, function(err, res){
   if(err){
     console.log("ERROR: connecting to Database. " + err);
   }
