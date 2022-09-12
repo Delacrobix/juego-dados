@@ -5,7 +5,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     controllers = require('./controllers/game_controller'),
     PORT = process.env.PORT || 8080,
-    MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/gamesDB';
+    MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/gamesDB';
 
 if(process.env.NODE_ENV !== 'production'){
   require('dotenv').config();
