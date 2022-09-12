@@ -9,7 +9,7 @@ const express = require('express'),
 env_conf.config();
 
 const PORT = process.env.PORT || 8080,
-      MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/gamesDB';
+      MONGODB = process.env.MONGODB || 'mongodb://localhost/gamesDB';
 
 const app = express(),
       statics = __dirname,
@@ -25,10 +25,10 @@ app.use('/static', express.static('./static'));
 
 (async () => {
   try{
-   await mongoose.connect(MONGODB_URI);
+   await mongoose.connect(MONGODB);
   }catch(err){
     console.log("ERROR: connecting to Database. " + err);
-    console.log(MONGODB_URI);
+    console.log(MONGODB);
   }
 
   app.listen(PORT, function(){
