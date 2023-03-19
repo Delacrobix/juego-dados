@@ -133,7 +133,6 @@ exports.returnPlayers = async function (req, res) {
         return res.status(404).send({ message: "Juego no existe" });
       }
 
-      console.log("Gamers: ", Game)
       res.json(Game.gamers);
     });
 };

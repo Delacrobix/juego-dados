@@ -30,8 +30,6 @@ async function sendData() {
     inProgress: true,
   };
 
-  console.log("players_array: " + players_array)
-
   let response_data;
 
   await fetch("/createGame", {
@@ -43,7 +41,7 @@ async function sendData() {
   })
     .then((res) => res.json())
     .then((response) => (response_data = response))
-    .catch((error) => console.error("Error:", error));
+    .catch((error) => console.error("Error: ", error));
 
   location.href = `/game/${response_data._id}`;
 }
