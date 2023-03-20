@@ -3,7 +3,7 @@
 <strong> Enlace de la aplicación desplegada: 
 <a href="https://juego-dados-production.up.railway.app/home">JUEGO DE DADOS</a></strong>
 
-Esta aplicación es un pequeño juego de dados en la cual participaran varios jugadores generados automáticamente por el algoritmo. El usuario podrá elegir el numero de jugadores que estarán en la partida, asignarles un nombre y posteriormente, iniciar el juego. Cada jugador hará una "tirada de dado" y el que obtenga el mayor puntaje sera el ganador. En caso de empate el sistema escogerá un ganador al azar.
+Esta aplicación es un pequeño proyecto construido para mi portafolio que consiste en un juego de dados en la cual participaran varios jugadores generados automáticamente por el algoritmo. El usuario podrá elegir el numero de jugadores que estarán en la partida, asignarles un nombre y posteriormente, iniciar el juego. Cada jugador hará una "tirada de dado" y el que obtenga el mayor puntaje sera el ganador. En caso de empate el sistema escogerá un ganador al azar.
 
 ### <strong>Tecnologías, instalación de dependencias y ejecución del programa:</strong>
 
