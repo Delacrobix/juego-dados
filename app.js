@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const controllers = require('./controllers/game_controller');
 const env_conf = require('dotenv');
+const path = require('path');
 
 env_conf.config({ path: '.env.local' });
 
@@ -38,6 +39,7 @@ app.use('/static', express.static('./static'));
 })();
 
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 app.use(router);
 
 app.get('/', (req, res) => {
