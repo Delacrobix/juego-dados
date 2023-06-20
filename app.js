@@ -21,8 +21,8 @@ app.use(body_parser.json());
 app.use(method_override());
 
 app.use(morgan('dev'));
-app.use(express.static(statics));
-app.use('/static', express.static('./static'));
+app.use(express.static(path.join(__dirname, 'static')));
+// app.use('/static', express.static('./static'));
 
 (async () => {
   try {
