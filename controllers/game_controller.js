@@ -1,14 +1,13 @@
-var mongoose = require("mongoose"),
-  Game = require("../models/gameSchema"),
-  Gamer = require("../models/gamerSchema");
+const Game = require('../models/gameSchema');
+const Gamer = require('../models/gamerSchema');
 
 //GET * Retorna un juego con un ID en especifico
 exports.findId = async function (req, res) {
   let gameId = req.params.gameId;
 
   await Game.findById(gameId)
-    .populate("gamers")
-    .populate("winner")
+    .populate('gamers')
+    .populate('winner')
     .exec(async function (err, Game) {
       return res.status(200).jsonp({
         id: Game._id,
@@ -27,8 +26,8 @@ exports.saveBet = async function (req, res) {
   let gameId = req.body.gameId;
 
   await Game.findById(gameId)
-    .populate("gamers")
-    .populate("winner")
+    .populate('gamers')
+    .populate('winner')
     .exec(async function (err, _Game) {
       _Game.gamers.forEach(async function (gamer) {
         gamer.gamer_bet = gamer.rollDices();
@@ -74,14 +73,14 @@ exports.setWinner = function (req, res) {
   let { id } = req.body;
 
   Game.findById(id)
-    .populate("gamers")
+    .populate('gamers')
     .exec(async function (err, Game) {
       if (err)
         return res
           .status(500)
           .send({ message: `Error al realizar la petición ${err}` });
 
-      if (!Game) return res.status(404).send({ message: "Juego no existe" });
+      if (!Game) return res.status(404).send({ message: 'Juego no existe' });
 
       Game.winner = Game.selectWinner();
       Game.inProgress = false;
@@ -99,7 +98,7 @@ exports.returnWinner = async function (req, res) {
   let gameId = req.params.gameId;
 
   await Game.findById(gameId)
-    .populate("winner")
+    .populate('winner')
     .exec(function (err, Game) {
       if (err) {
         return res
@@ -107,7 +106,7 @@ exports.returnWinner = async function (req, res) {
           .send({ message: `Error al realizar la petición ${err}` });
       }
       if (!Game) {
-        return res.status(404).send({ message: "Juego no existe" });
+        return res.status(404).send({ message: 'Juego no existe' });
       }
       res.json({
         id: Game.winner._id,
@@ -121,7 +120,7 @@ exports.returnPlayers = async function (req, res) {
   let gameId = req.params.gameId;
 
   await Game.findById(gameId)
-    .populate("gamers")
+    .populate('gamers')
     .exec(async function (err, Game) {
       if (err) {
         return res
@@ -130,7 +129,7 @@ exports.returnPlayers = async function (req, res) {
       }
 
       if (!Game) {
-        return res.status(404).send({ message: "Juego no existe" });
+        return res.status(404).send({ message: 'Juego no existe' });
       }
 
       res.json(Game.gamers);

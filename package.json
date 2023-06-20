@@ -6,12 +6,12 @@
     "method-override": "^2.1.2",
     "mongodb": "^4.7.0",
     "mongoose": "^6.4.4",
-    "morgan": "^1.10.0",
     "pug": "^3.0.2"
   },
   "devDependencies": {
     "dotenv": "^16.0.2",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "morgan": "^1.10.0"
   },
   "scripts": {
     "start": "node app.js",

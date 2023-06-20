@@ -1,47 +1,47 @@
-var start_button = document.querySelector(".start-button");
-var url_id = window.location.pathname.slice(6);
-var new_game = document.querySelector(".new-game");
+const start_button = document.querySelector('.start-button');
+const url_id = window.location.pathname.slice(6);
+const new_game = document.querySelector('.new-game');
 
 async function init_function() {
   printPlayers(await getPlayers());
 }
 
 new_game.onclick = function () {
-  location.href = "/home";
+  location.href = '/home';
 };
 
 start_button.onclick = async function (e) {
-  start_button.style.visibility = "hidden";
-  start_button.style.display = "none";
+  start_button.style.visibility = 'hidden';
+  start_button.style.display = 'none';
   e.preventDefault();
 
   // * envía la instrucción al backend para que asigne la apuesta y seleccione el ganador del juego.
   await setFullGame();
 
   await printPlayersBet();
-  new_game.style.visibility = "visible";
+  new_game.style.visibility = 'visible';
 };
 
 async function setFullGame() {
-  await fetch("/api/game/saveBet", {
-    method: "POST",
+  await fetch('/api/game/saveBet', {
+    method: 'POST',
     body: JSON.stringify({ gameId: url_id }),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   })
     .then((res) => res.json())
-    .catch((error) => console.error("Error: ", error));
+    .catch((error) => console.error('Error: ', error));
 
-  await fetch("/api/game/setWinner", {
-    method: "POST",
+  await fetch('/api/game/setWinner', {
+    method: 'POST',
     body: JSON.stringify({ id: url_id }),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   })
     .then((res) => res.json())
-    .catch((error) => console.error("Error: ", error));
+    .catch((error) => console.error('Error: ', error));
 }
 
 async function getPlayers() {
@@ -69,10 +69,10 @@ async function getWinner() {
 }
 
 function printPlayers(players) {
-  let tr = document.querySelectorAll(".tr-list");
+  let tr = document.querySelectorAll('.tr-list');
 
   tr.forEach((e) => {
-    e.innerHTML = "";
+    e.innerHTML = '';
   });
 
   let label_name;
@@ -83,8 +83,8 @@ function printPlayers(players) {
       count++;
     }
 
-    label_name = document.createElement("td");
-    label_name.className = "name-label";
+    label_name = document.createElement('td');
+    label_name.className = 'name-label';
 
     label_name.innerText = players[i].name;
     tr[count].appendChild(label_name);
@@ -92,21 +92,19 @@ function printPlayers(players) {
 }
 
 async function printPlayersBet() {
-  let label_name = document.querySelectorAll(".name-label");
-  let winner_label = document.querySelector(".winner-label");
+  let label_name = document.querySelectorAll('.name-label');
+  let winner_label = document.querySelector('.winner-label');
 
   let players = await getPlayers();
   let winner = await getWinner();
 
-  //printPlayers(players);
-
   for (let i = 0; i < players.length; i++) {
-    label_name[i].innerHTML += ": " + players[i].gamer_bet;
+    label_name[i].innerHTML += ': ' + players[i].gamer_bet;
   }
 
-  winner_label.innerHTML = "El ganador es: " + winner.name;
-  winner_label.style.color = "white";
-  winner_label.style.fontSize = "1.5em";
+  winner_label.innerHTML = 'El ganador es: ' + winner.name;
+  winner_label.style.color = 'white';
+  winner_label.style.fontSize = '1.5em';
 }
 
 init_function();

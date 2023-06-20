@@ -1,107 +1,108 @@
-body{
-    margin: 0px;
-    padding: 0px;
-    font-size: 14px;
-    background-color: rgb(32, 27, 27);
-    font-family:Arial, Helvetica, sans-serif;
+body {
+  margin: 0px;
+  padding: 0px;
+  font-size: 14px;
+  background-color: rgb(32, 27, 27);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.form{
-    height: 100vh;
+.form {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
+  .countdown {
+    background-color: rgb(104, 104, 104);
+    border-radius: 15%;
+
+    label {
+      color: aliceblue;
+      font-size: 2em;
+    }
+  }
+
+  .structure-container {
+    display: grid;
+    align-content: center;
+    color: aliceblue;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 10px;
+
+    table tr {
+      th,
+      td {
+        border: white 1px inset;
+      }
+    }
+  }
+
+  .players-container {
+    background-color: rgb(82, 82, 82);
+    border-radius: 15px;
+    padding: 10px;
+    width: 400px;
+    height: auto;
+    align-content: center;
+    color: aliceblue;
+
+    label {
+      font-size: 1.2em;
+    }
+
+    table {
+      width: 100%;
+      text-align: left;
+      padding-top: 10px;
+
+      th,
+      td {
+        border: white 1px inset;
+        padding: 10px;
+      }
+    }
+
+    .name-label {
+      font-size: 1.2rem;
+      padding: 5px;
+    }
+  }
+
+  .winner.container {
+    width: 350px;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .winner-label {
+      color: aliceblue;
+      font-size: 1.2rem;
+    }
+  }
+
+  .button-container {
+    .new-game {
+      visibility: hidden;
+    }
+
     display: grid;
     justify-content: center;
-    align-content: center;
-    
 
-    .countdown{
-         background-color: rgb(104, 104, 104);
-         border-radius: 15%;
-
-        label{
-            color: aliceblue;
-            font-size: 2em;
-        }
-    } 
-
-    .structure-container{
-        display: grid;
-        align-content: center;
-        color: aliceblue;
-        font-size: 1.2em;
-        text-align: center;
-        padding: 10px;
-
-        table tr {
-            th, td{
-                border: white 1px inset;
-            }
-        }
-    }
-    
-    .players-container{
-        background-color: rgb(82, 82, 82);
-        border-radius: 15px;
-        padding: 10px;
-        width: 400px;
-        height: auto;
-        align-content: center;
-        color: aliceblue;
-
-        label{
-            font-size: 1.2em;
-        }
-
-        table{
-            width: 100%;
-            text-align: left;
-            padding-top: 10px;
-
-            th, td{
-                border: white 1px inset;
-                padding: 10px;
-            }
-        }
-
-        .name-label{
-            font-size: 1.2rem;
-            padding: 5px;
-        }
+    a {
+      padding: 1rem 2rem 1rem 2rem;
+      position: relative;
+      background-color: rgb(151, 132, 238);
+      border-radius: 10px;
+      transition: all 500ms ease-out;
+      color: black;
+      font-size: 2em;
+      text-decoration: none;
     }
 
-    .winner.container{
-        width: 350px;
-        height: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
-
-        .winner-label{
-            color: aliceblue;
-            font-size: 1.2rem;
-        }
+    a:hover {
+      background-color: azure;
+      cursor: pointer;
     }
-
-    .button-container{
-        .new-game{
-            visibility: hidden;
-        }
-        
-        display: grid;
-        justify-content: center;
-        
-        a{
-            padding: 1rem 2rem 1rem 2rem;
-            position: relative;
-            background-color: rgb(151, 132, 238);
-            border-radius: 10px;
-            transition: all 500ms ease-out;
-            color: black;
-            font-size: 2em;
-            text-decoration: none;
-        }
-
-        a:hover{
-            background-color: azure;
-            cursor: pointer;
-        }
-    }
+  }
 }
