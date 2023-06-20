@@ -13,7 +13,7 @@ const PORT = process.env.PORT;
 const MONGODB = process.env.MONGODB;
 
 const app = express();
-const statics = __dirname;
+const statics = path.join(__dirname, 'static');
 const router = express.Router();
 
 app.use(body_parser.urlencoded({ extended: false }));
@@ -21,8 +21,7 @@ app.use(body_parser.json());
 app.use(method_override());
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'static')));
-// app.use('/static', express.static('./static'));
+app.use(express.static(statics));
 
 (async () => {
   try {
