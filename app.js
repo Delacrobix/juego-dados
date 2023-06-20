@@ -40,12 +40,12 @@ app.use('/static', express.static('./static'));
 app.set('view engine', 'pug');
 app.use(router);
 
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/game/:id', async (req, res) => {
-  res.render('game', {});
+app.get('/game/:id', (req, res) => {
+  res.render('game');
 });
 
 //API routes
