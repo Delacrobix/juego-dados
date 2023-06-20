@@ -7,7 +7,7 @@ async function init_function() {
 }
 
 new_game.onclick = function () {
-  location.href = '/home';
+  location.href = '/';
 };
 
 start_button.onclick = async function (e) {

@@ -40,7 +40,7 @@ app.use('/static', express.static('./static'));
 app.set('view engine', 'pug');
 app.use(router);
 
-app.get('/home', async (req, res) => {
+app.get('/', async (req, res) => {
   res.render('index');
 });
 
