@@ -26,10 +26,8 @@ app.use(express.static(statics));
 (async () => {
   try {
     await mongoose.connect(MONGODB);
-    console.log('Connect to: ' + MONGODB);
   } catch (err) {
     console.log('ERROR: connecting to Database. ' + err);
-    console.log(MONGODB);
   }
 
   app.listen(PORT, function () {
